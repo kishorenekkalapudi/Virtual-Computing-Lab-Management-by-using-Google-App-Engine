@@ -1,0 +1,49 @@
+
+//Database Creation
+CREATE DATABASE VirtualLab
+
+//Using
+USE VirtualLab
+
+//Creating Student Table
+CREATE TABLE StudentDetails(StudentId int AUTO_INCREMENT PRIMARY KEY,FirstName varchar(50),LastName varchar(50),UserName varchar(50),Password varchar(50),DateOfBirth date,Gender varchar(10),EMail varchar(50),Address varchar(50),PhoneNumber varchar(50),SecurityQuestion varchar(50),SecurityAnswer varchar(50),Status varchar(2))
+
+
+//Cteating Professors Table
+CREATE TABLE ProfessorDetails(ProfessorId int AUTO_INCREMENT PRIMARY KEY,FirstName varchar(50),LastName varchar(50),UserName varchar(50),Password varchar(50),DateOfBirth date,Gender varchar(10),Department varchar(50),EMail varchar(50),Address varchar(50),PhoneNumber varchar(50),SecurityQuestion varchar(50),SecurityAnswer varchar(50),Status varchar(2))
+
+
+
+//Creating Admin Table
+CREATE TABLE Admin(UserName varchar(50),Password varchar(50))
+
+
+
+//Creating Labs Table
+CREATE TABLE LabsDetails(LabId int PRIMARY KEY AUTO_INCREMENT,LabName varchar(25),NumberOfSystems int)
+
+
+//Creating System Table
+
+CREATE TABLE SystemDetails(SystemId int PRIMARY KEY AUTO_INCREMENT,LabId int,RAM int,HardDisk int,CPU float,Available int,FOREIGN KEY(LabId) REFERENCES LabsDetails(LabId))
+
+
+//Creating MonitorStudent Table for Monitor
+
+CREATE TABLE MonitorStudent(
+MonitorId int PRIMARY KEY AUTO_INCREMENT,
+StudentId int,
+LabId int,
+SystemId int, 
+DateUse Date,
+StartTime varchar(50),
+EndTime varchar(50),
+FOREIGN KEY(StudentId) REFERENCES StudentDetails(StudentId),
+FOREIGN KEY(LabId) REFERENCES LabsDetails(LabId),
+FOREIGN KEY(SystemId) REFERENCES SystemDetails(SystemId))
+
+
+
+
+//Request Resources Table
+CREATE TABLE ResourceRequests(RequestId int AUTO_INCREMENT PRIMARY KEY, StudentId int,ProfessorId int,DateOfRequest date,LabId int,SystemId int,RAM int,HardDisk int,CPU float,Status int,FOREIGN KEY(StudentId) REFERENCES StudentDetails(StudentId),FOREIGN KEY(ProfessorId) REFERENCES ProfessorDetails(ProfessorId),FOREIGN KEY(LabId) REFERENCES LabsDetails(LabId),FOREIGN KEY(SystemId) REFERENCES SystemDetails(SystemId))
