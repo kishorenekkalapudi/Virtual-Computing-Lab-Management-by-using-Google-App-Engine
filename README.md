@@ -21,4 +21,4 @@ Here are typical components in our system:
 
 Technologies Used
 =================
-Java, REST, JQuery, JQuery Libraries, Android, PhoneGap, HTML, Maven, Hadoop
+Java, HTML, Java Script, JSP, Servlets
