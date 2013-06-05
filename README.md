@@ -18,3 +18,7 @@ Here are typical components in our system:
 -  A virtual lab. engine which is a back-end component bridges the user interface and the repository. It 
    interacts with the above resource management APIs to support users to configure, select, and deploy 
    different computing resources and software for each lab. 
+
+Technologies Used
+=================
+Java, REST, JQuery, JQuery Libraries, Android, PhoneGap, HTML, Maven, Hadoop
